@@ -9,9 +9,11 @@
       :key="data.id"
     >
       <img :src="imgUrl[index]" alt>
-      <div class="bg" :class="classObject(index)"></div>
-      <span id="news-title">{{data.title}}</span>
-      <span id="news-time">{{data.releaseTime}}</span>
+      <div class="bg"></div>
+      <div id="content">
+        <p id="news-title">{{data.title}}</p>
+        <p id="news-time">{{data.releaseTime}}</p>
+      </div>
     </mu-ripple>
     <mu-flex justify-content="center">
       <mu-pagination
@@ -37,6 +39,7 @@ export default {
       pageNum: 5,
       lidata: {},
       imgUrl: [],
+      imgUrlIfr: "",
       nova: [],
       current: 1,
       pageSize: 5,
@@ -66,23 +69,24 @@ export default {
         // console.log(this.nova.id);
         // console.log(this.nova);
         // console.log(this.pageNum);
+        var num = 0;
         for (let list of this.nova) {
           this.imgUrl.push(
             "http://47.107.32.15:8080/sport/admin_ann_img?id=" + list.id
           );
         }
         //console.log(this.imgUrl);
-        document.getElementById("bgColor").add;
+        //document.getElementById("bgColor").add;
       })
       .catch(err => {
         console.log(err);
       });
   },
+
   computed: {
     classObject: function() {
       return function(index) {
-        let num = index % 4;
-        return "bgcolor" + num;
+        return "ifr" + index;
       };
     }
   },
@@ -167,6 +171,12 @@ export default {
     overflow: hidden;
     opacity: 0.5;
   }
+  #content {
+    width: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.7);
+    bottom: 0;
+  }
   .bgcolor0 {
     background: #f39c11;
   }
@@ -180,14 +190,16 @@ export default {
     background: purple;
   }
   #news-title {
-    position: absolute;
-    bottom: 2rem;
-    left: 1rem;
+    margin: 0.5rem 0;
+    position: relative;
+    bottom: 0.2rem;
+    left: 0.5rem;
   }
   #news-time {
-    position: absolute;
-    bottom: 0.5rem;
-    left: 1rem;
+    position: relative;
+    margin: 0.5rem 0;
+    bottom: 0.2rem;
+    left: 0.5rem;
     font-size: 0.8rem;
     opacity: 0.7;
   }

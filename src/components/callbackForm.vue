@@ -42,6 +42,8 @@
 </template>
 
 <script>
+import Message from "muse-ui-message";
+import $router from "vue-router";
 function getFileUrl(obj) {
   let url;
   url = window.URL.createObjectURL(obj.files.item(0));
@@ -59,14 +61,14 @@ export default {
         { validate: val => !!val, message: "必须填写学号和姓名" },
         {
           validate: val => /^[B|Q][0-9]{8}[\u4e00-\u9fa5]{2,4}$/.test(val),
-          message: "用户名长度大于3"
+          message: "用户名不符合规范"
         }
       ],
       passwordRules: [
-        { validate: val => !!val, message: "必须填写密码" },
+        { validate: val => !!val, message: "必须填写电话" },
         {
           validate: val => /^1[34578]\d{9}$/.test(val),
-          message: "密码长度大于3小于10"
+          message: "请填写正确的电话号码"
         }
       ],
       textRules: [{ validate: val => !!val, message: "必须填写内容！" }],
@@ -145,6 +147,7 @@ export default {
       }
     },
     submit() {
+      var self = this;
       this.$refs.form.validate().then(result => {
         console.log(this.$refs);
         console.log("form valid: ", result);
@@ -171,10 +174,10 @@ export default {
           // });
           var form = document.getElementById("callbackForm");
           var fd = new FormData(form);
-          console.log(fd.get("username"));
-          console.log(fd.get("commit"));
-          console.log(fd.get("phone"));
-          console.log(fd.get("multipartFile"));
+          // console.log(fd.get("username"));
+          // console.log(fd.get("commit"));
+          // console.log(fd.get("phone"));
+          // console.log(fd.get("multipartFile"));
           $.ajax({
             url: "http://47.244.115.229:8080/add",
             type: "POST",
@@ -184,8 +187,13 @@ export default {
             contentType: false, // 告诉jQuery不要去设置Content-Type请求头
             success: function(response, status, xhr) {
               console.log(response);
-              console.log(status);
-              console.log(xhr);
+              if (response.code == 0) {
+                Message.alert("提交成功", "提示");
+                self.$router.back(-1);
+              }
+            },
+            error(err) {
+              Message.alert("提交失败，请重新填写(可能未上传文件)", "提示");
             }
           });
         }
