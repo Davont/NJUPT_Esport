@@ -1,6 +1,8 @@
 # NJUPT Esport System
 
+![TIM图片20190318202352.png](https://i.loli.net/2019/03/18/5c8f8df0260ca.png)
 ## Introdction
+
 
 Easy sports, for students and teachers to provide sports information service platform.It is jointly developed by nanyou yiban and the sports department of nanjing university of posts and telecommunications.The main users are students who need to query sports scores and daily running information, and teachers who need to provide information for students.
 
