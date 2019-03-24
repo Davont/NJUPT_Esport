@@ -67,5 +67,6 @@ npm test
 - [x] @Rachel 
 - [x] @Mayer
 - [x] [@Thomas-YXW](https://github.com/Thomas-YXW)
+- [x] [@ShGuan0823](https://github.com/ShGuan0823)
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
