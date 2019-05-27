@@ -1,6 +1,6 @@
 # NJUPT Esport System
 
-![TIM图片20190318202352.png](https://i.loli.net/2019/03/18/5c8f8df0260ca.png)
+![logo](https://i.loli.net/2019/03/18/5c8f8df0260ca.png)
 ## Introdction
 
 
@@ -8,7 +8,7 @@ Easy sports, for students and teachers to provide sports information service pla
 
 ## Product architecture
 
-![TIM截图20190309212031.png](https://i.loli.net/2019/03/09/5c83bdbf54e6a.png)
+![picture](https://i.loli.net/2019/03/09/5c83bdbf54e6a.png)
 
 ## Detailed function description
 
